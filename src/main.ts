@@ -1,6 +1,12 @@
 const path = require('path');
 const fs = require('fs');
 
+/*
+    - This function read a text file
+    - Need one argument(File path)
+    - Return data read from file
+*/
+
 const readTextFromFile = (filePath:string):string =>{
     try{
         const data = fs.readFileSync(filePath, 'utf8');
@@ -12,6 +18,11 @@ const readTextFromFile = (filePath:string):string =>{
    
 }
 
+/*
+    - This function count number of specific word
+    - Need two argument, first one is the text from file and the second one is the word looking for
+    - Returns the number of word appearances 
+*/
 const findAndCountWord = (data:string, wordLookingFor:string):number =>{
     let arrData = data.toLowerCase().split(" ");
     let cnt = 0
