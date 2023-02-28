@@ -35,11 +35,35 @@ const findAndCountWord = (data:string, wordLookingFor:string):number =>{
  return cnt;
 }
 
+/*
+    Solution 3 with REGEX
+*/
 
+const cntWordWithRegex = (textIn:string, word:string):number => {
+    const text = textIn.toLowerCase()
+    // const regex = text.search(word.toLowerCase() + " ")
+    const regexText = textIn.search(/the /ig)
+    // console.log(text.search(word.toLowerCase() + " "))
+
+    return regexText
+}
+
+//Time for algorithm A
+let startTimeA = new Date().getTime();
 const text = readTextFromFile('./text_file/full_speech.txt')
 const wordLookingFor = 'The'
 const countOfSpecificWord = findAndCountWord(text,wordLookingFor)
 
 console.log(`Cantidad de repeticiones de la palabra ${wordLookingFor} es ${countOfSpecificWord}`)
+let endTimeA= new Date().getTime();
+let timeDiff = (endTimeA - startTimeA);
+console.log(`Tiempo en ejecución ${timeDiff} ms`);
 
+
+let startTimeB = new Date().getTime();
+const countWithRegex = cntWordWithRegex(text, wordLookingFor)
+console.log(`Cantidad de repeticiones de la palabra ${wordLookingFor} es ${countWithRegex}`)
+let endTimeB = new Date().getTime();
+let timeDiffB = (endTimeB - startTimeB);
+console.log(`Tiempo en ejecución ${timeDiffB} ms`);
 
