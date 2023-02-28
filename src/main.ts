@@ -40,12 +40,15 @@ const findAndCountWord = (data:string, wordLookingFor:string):number =>{
 */
 
 const cntWordWithRegex = (textIn:string, word:string):number => {
-    const text = textIn.toLowerCase()
     // const regex = text.search(word.toLowerCase() + " ")
-    const regexText = textIn.search(/the /ig)
+    const regex = /the /ig
+    let count = 0;
     // console.log(text.search(word.toLowerCase() + " "))
+    while(regex.exec(textIn) !== null){
+        count += 1;
+    }
 
-    return regexText
+    return count;
 }
 
 //Time for algorithm A
