@@ -57,22 +57,23 @@ const cntWordWithRegex = (textIn:string, word:string):number => {
 }
 
 //Time for algorithm A
-
+console.log("====> ### A - Challenge ### <====");
 const text = readTextFromFile('./text_file/full_speech.txt');
 const wordLookingFor = 'The';
 let startTimeA = new Date().getTime();
 const countOfSpecificWord = findAndCountWord(text,wordLookingFor);
-console.log(`Cantidad de repeticiones de la palabra ${wordLookingFor} es ${countOfSpecificWord}`);
+console.log(`  > Cantidad de repeticiones de la palabra ${wordLookingFor} es ${countOfSpecificWord}`);
 let endTimeA= new Date().getTime();
 let timeDiff = (endTimeA - startTimeA);
-console.log(`Tiempo en ejecución ${timeDiff} ms`);
+console.log(`  > Tiempo en ejecución ${timeDiff} ms`);
 
 
 //Time for algorithm B
+console.log("====> ### C - Challenge ### <====");
 let startTimeB = new Date().getTime();
 const countWithRegex = cntWordWithRegex(text, wordLookingFor)
-console.log(`Cantidad de repeticiones de la palabra ${wordLookingFor} es ${countWithRegex}`)
+console.log(`  > Cantidad de repeticiones de la palabra ${wordLookingFor} es ${countWithRegex}`)
 let endTimeB = new Date().getTime();
 let timeDiffB = (endTimeB - startTimeB);
-console.log(`Tiempo en ejecución ${timeDiffB} ms`);
+console.log(`  > Tiempo en ejecución ${timeDiffB} ms`);
 
