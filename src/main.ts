@@ -18,6 +18,7 @@ const readTextFromFile = (filePath:string):string =>{
 }
 
 /*
+    #### Solución #1: Código puro y simple ####
     - This function count number of specific word
     - Need two argument, first one is the text from file and the second one is the word looking for
     - Returns the number of word appearances 
@@ -37,32 +38,29 @@ const findAndCountWord = (data:string, wordLookingFor:string):number =>{
         if(word === wordLookingFor.toLowerCase()){
             cnt += 1;
             i = newPosition;
-            console.log(word);
         }
     }
  return cnt;
 }
 
 /*
-    Solution 3 with REGEX
+    Solución #3: REGEX (/.../)
 */
 
 const cntWordWithRegex = (textIn:string, word:string):number => {
-    // const regex = text.search(word.toLowerCase() + " ")
-    const regex = /the /ig
+    const regex = /The/ig
     let count = 0;
-    // console.log(text.search(word.toLowerCase() + " "))
     while(regex.exec(textIn) !== null){
         count += 1;
     }
-
     return count;
 }
 
 //Time for algorithm A
-let startTimeA = new Date().getTime();
+
 const text = readTextFromFile('./text_file/full_speech.txt');
 const wordLookingFor = 'The';
+let startTimeA = new Date().getTime();
 const countOfSpecificWord = findAndCountWord(text,wordLookingFor);
 console.log(`Cantidad de repeticiones de la palabra ${wordLookingFor} es ${countOfSpecificWord}`);
 let endTimeA= new Date().getTime();
