@@ -13,7 +13,6 @@ const readTextFromFile = (filePath:string):string =>{
         return data.toString()
     }catch(err){
         throw new Error("Error " + err);
-        return err.toString()
     }    
    
 }
@@ -24,13 +23,22 @@ const readTextFromFile = (filePath:string):string =>{
     - Returns the number of word appearances 
 */
 const findAndCountWord = (data:string, wordLookingFor:string):number =>{
-    let arrData = data.toLowerCase().split(" ");
+    let arrData = data.toLowerCase().split("");
     let cnt = 0
+    let word = "";
+    let newPosition = 0
     for(let i = 0; i < arrData.length; i++){
-        if(arrData[i] === wordLookingFor.toLowerCase()){
-            cnt += 1;
+        word = arrData[i];
+        for(let j = i + 1; j < i + wordLookingFor.length; j++){
+            word += arrData[j]; 
+            newPosition = j;
         }
 
+        if(word === wordLookingFor.toLowerCase()){
+            cnt += 1;
+            i = newPosition;
+            console.log(word);
+        }
     }
  return cnt;
 }
@@ -53,16 +61,16 @@ const cntWordWithRegex = (textIn:string, word:string):number => {
 
 //Time for algorithm A
 let startTimeA = new Date().getTime();
-const text = readTextFromFile('./text_file/full_speech.txt')
-const wordLookingFor = 'The'
-const countOfSpecificWord = findAndCountWord(text,wordLookingFor)
-
-console.log(`Cantidad de repeticiones de la palabra ${wordLookingFor} es ${countOfSpecificWord}`)
+const text = readTextFromFile('./text_file/full_speech.txt');
+const wordLookingFor = 'The';
+const countOfSpecificWord = findAndCountWord(text,wordLookingFor);
+console.log(`Cantidad de repeticiones de la palabra ${wordLookingFor} es ${countOfSpecificWord}`);
 let endTimeA= new Date().getTime();
 let timeDiff = (endTimeA - startTimeA);
 console.log(`Tiempo en ejecución ${timeDiff} ms`);
 
 
+//Time for algorithm B
 let startTimeB = new Date().getTime();
 const countWithRegex = cntWordWithRegex(text, wordLookingFor)
 console.log(`Cantidad de repeticiones de la palabra ${wordLookingFor} es ${countWithRegex}`)
