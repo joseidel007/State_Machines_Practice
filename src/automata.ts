@@ -13,7 +13,7 @@ let alphabet =
     e: "e"
 };
 
-const stateq0 = (data:[], cnt:number, correct:boolean) =>{
+const stateq0 = (data:[], cnt:number, correct:boolean):number =>{
     if(data.length === 0){
         return cnt
     }
