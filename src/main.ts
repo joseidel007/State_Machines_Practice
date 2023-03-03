@@ -56,6 +56,7 @@ const cntWordWithRegex = (textIn:string, word:string):number => {
     return count;
 }
 
+
 //Time for algorithm A
 console.log("====> ### A - Challenge ### <====");
 const text = readTextFromFile('./text_file/full_speech.txt');
